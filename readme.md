@@ -17,9 +17,9 @@ Script is display current time in HH:MM:SS:MS format (digital clock) with option
 ```
 ## Preview
 
-https://brq1.github.io/Clock/
+https://brq1.github.io/Clock/src
 
-##To develop
+## To develop
 
 1. Current time on the classic clock face;
 2. The possibility of time zone change;

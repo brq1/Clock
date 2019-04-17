@@ -1,5 +1,5 @@
 
-function Clock(){;
+function clock(){;
   var date = new Date();
   var h = date.getHours();
   var m = date.getMinutes();
@@ -10,7 +10,7 @@ function Clock(){;
   if (AmPm.checked == true) {
     h = (h>12) ? h - 12 : h;
   }
-//display method 
+//display method  
   h = (h<10) ? "0"+h : h;
   m = (document.getElementById("min").checked === true) ? ((m<10) ? "0"+m : m) : "--";
   s = (document.getElementById("sec").checked === true) ? ((s<10) ? "0"+s : s) : "--";
@@ -20,7 +20,7 @@ function Clock(){;
 
   document.getElementById("display").innerHTML = timer;
 
-  setInterval(Clock,1000);
+  setInterval(clock,1000);
 
 }
 
