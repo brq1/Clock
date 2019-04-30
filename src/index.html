@@ -9,19 +9,37 @@
    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
 
 </head>
-<body onload="setInterval(clock,10)">
+<body>
    <div id="cointainer">
-      <div id="display">88:88:88:88</div>
-      <div id="option"> Settings: <br>
-         <input type="checkbox" id="min" >Minutes<br>
-         <input type="checkbox" id="sec" >Second<br>
-         <input type="checkbox" id="msc" >Milisecond<br>
-         Mode:<br>
-         <input type="radio" name="AmPm" id="AmPm"> AM / PM <br>
-         <input type="radio" name="AmPm" > 24H <br>
-           </div>
+      <div id="display">
+         <div id="AmPm"></div>
+         <div id="hour" class="box"></div>
+         <div id="min" class="box"></div>
+         <div id="sec" class="box"></div>
+         <div id="msec" class="box"></div>
       </div>
-   </div>
-<script type="text/javascript" src="script2.js" async></script>
+      <fieldset id="menu">
+         <legend> Settings: </legend>
+         <fieldset class="option"> 
+            <legend> Display:</legend>
+            <div><input type="checkbox" id="minBox" checked>Minutes</div>
+            <div><input type="checkbox" id="secBox" checked>Second</div>
+            <div><input type="checkbox" id="mscBox" checked>Milisecond</div>
+         </fieldset>
+         <fieldset class="option">
+            <legend>Mode:</legend>
+            <div><input type="radio" name="AmPm" value=1 id="radioAmPm"> AM / PM </div>
+            <div><input type="radio" name="AmPm" value=0 checked="true"> 24H </div>
+         </fieldset>
+         <fieldset class="option" id="UTC">
+            <legend> UTC: </legend>
+            <div><input type="radio" name="zone" > &plusmn00:00 </div>
+            <div><input type="radio" name="zone" > +01:00 </div>
+            <div><input type="radio" name="zone" checked > +02:00 </div>
+         </fieldset>
+      </fieldset>
+   </div> 
+
+<script type="text/javascript" src="script2.js" defer></script>
 </body>
 </html>

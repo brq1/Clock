@@ -2,27 +2,32 @@ body {
   background-color: #202020;
   color: white;
   font-family: 'IBM Plex Mono', monospace;
-  width: 800px;
+  width: 500px;
 }
 
 #display {
-padding: 0px 10px 0px 10px;
-margin: 10px;
-color: lime;
-font-size: 64px;
-width:430px;
-float:left;
-background-color: #1f301f;
-border: solid 3px lime;
-border-radius: 10px;
+  padding: 0px 10px;
+  height: 80px;
+  color: lime;
+  font-size: 64px;
+  background-color: #1f301f;
+  border: solid 3px lime;
+  border-radius: 10px;
+  align-items: center;
 }
 
-#option {
-margin-left: 50px;
-Width: 120px;
-float: left;
-border: solid 3px #cccccc;
-padding: 10px;
-margin: 10px;
-border-radius: 10px;
+fieldset{
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.option {
+  float: left;
+  width: 124px;
+  height: 80px;
+
+}
+.box{
+  float: left;
+  padding-right: 30px;
 }
