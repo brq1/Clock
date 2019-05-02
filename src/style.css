@@ -2,7 +2,7 @@ body {
   background-color: #202020;
   color: white;
   font-family: 'IBM Plex Mono', monospace;
-  width: 500px;
+  width: 520px;
 }
 
 #display {
@@ -23,8 +23,8 @@ fieldset{
 
 .option {
   float: left;
-  width: 115px;
-  height: 100px;
+  width: 120px;
+  height: 90px;
 
 }
 .box{
