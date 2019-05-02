@@ -23,14 +23,13 @@ fieldset{
 
 .option {
   float: left;
-  width: 124px;
+  width: 120px;
   height: 80px;
 
 }
 .box{
   float: left;
-  padding-right: 27px;
-  text-align: center;
+  padding-right: 25px;
 }
 
 #AmPm{
