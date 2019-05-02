@@ -9,7 +9,7 @@ body {
   padding: 0px 10px;
   height: 80px;
   color: lime;
-  font-size: 64px;
+  font-size: 60px;
   background-color: #1f301f;
   border: solid 3px lime;
   border-radius: 10px;
@@ -23,8 +23,8 @@ fieldset{
 
 .option {
   float: left;
-  width: 120px;
-  height: 80px;
+  width: 115px;
+  height: 100px;
 
 }
 .box{
