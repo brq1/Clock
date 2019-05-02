@@ -13,7 +13,7 @@ body {
   background-color: #1f301f;
   border: solid 3px lime;
   border-radius: 10px;
-  align-items: center;
+
 }
 
 fieldset{
@@ -29,5 +29,12 @@ fieldset{
 }
 .box{
   float: left;
-  padding-right: 30px;
+  padding-right: 27px;
+  text-align: center;
+}
+
+#AmPm{
+  margin-top: 10px;
+  width: 30px;
+  font-size: 22px;
 }

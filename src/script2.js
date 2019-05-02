@@ -1,14 +1,18 @@
-var ms = new Date();
-var s, m, h;
+var currentTime = new Date();
+var ms = currentTime.getMilliseconds;
+var s = currentTime.getSeconds;
+var m = currentTime.getMinutes;
+var h = currentTime.getHours;
 var timeZone = 2;
-var AmPm = 0;
+var pm = true;
 
 
 var div = {
   ms : document.getElementById("msec"),
   s : document.getElementById("sec"),
   m : document.getElementById("min"),
-  h : document.getElementById("hour")
+  h : document.getElementById("hour"),
+  Am : document.getElementById("AmPm")
 }
 
 var box = {
@@ -17,17 +21,14 @@ var box = {
   m : document.getElementById("minBox")
 }
 
-function timer (){
-  ms++;
-}
 
-function getTime(){
-  setTimeout(timer,1);
-  s = Math.floor(ms/1000);
-  m = Math.floor(s/60);
-  h = Math.floor(m/60) + timeZone - (AmPm*12);
+window.onload = function getTime(){
+  ms = Math.floor(currentTime/10);
+  s = Math.floor(currentTime/1000);
+  m = Math.floor(currentTime/60000);
+  h = Math.floor(currentTime/3600000) + timeZone;
 
-  ms %= 1000;
+  ms %= 100;
   s %= 60;
   m %= 60;
   h %= 24;
@@ -36,15 +37,34 @@ function getTime(){
   m = (m<10) ? "0"+m : m;
   s = (s<10) ? "0"+s : s;
   ms = (ms<10) ? "0"+ms : ms;
+
+  dispay();
+  currentTime = (currentTime*1+10);
+  setTimeout(getTime,10);
 }
 
-window.onload = function time(){
-      getTime();
-      div.ms.innerText = ms;
-      div.s.innerText = s;
-      div.m.innerText = m;
-      div.h.innerText = h;
-      //setInterval(getTime,1);
+function dispay(){
+    div.ms.innerText = ms;
+    div.s.innerText = s;
+    div.m.innerText = m;
+    div.h.innerText = h - (pm*12);
+
+}
+
+
+function pm (){  
+  
+  var testH = 24 - currentTime.getHours();
+  var revision = 86400000-currentTime; // time to end day
+  
+  if (testH >= 12){
+    div.Am.innerHTML = "PM";
+    pm = true;
+  } else{
+    div.Am.innerHTML = "AM";
+    pm = false;
+  }
+  setTimeout(pm,revision);
 }
 
 box.ms.addEventListener("change", function hideMs(){
@@ -71,21 +91,5 @@ box.m.addEventListener("change", function hideM(){
   }
 });
 
-var radio = document.getElementById("radioAmPm");
+var radio = document.getElementsByName("radio");
 
-radio.addEventListener("change", function radio(){
-  if (this.checked) {
-    AmPm = 1
-  } else {
-    AmPm = 0;
-  }
-});
-
- /* radio[i].addEventListener("click", function mode(){
-    for (var i=0; i<2; i++) {
-      if (radio[i].checked) {
-        radio[i].value
-      }
-    }
-  }
-  )*/
