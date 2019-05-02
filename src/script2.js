@@ -27,25 +27,21 @@ window.onload = function getTime(){
   m = (Math.floor(currentTime/60000))%60;
   h = (Math.floor(currentTime/3600000))%24 + timeZone;
 
-  dispay();
+  display();
   currentTime = (currentTime*1+10);
   setTimeout(getTime,10);
 }
 
-function dispay(){
-
-  h = (h<10) ? "0"+h : h;
-  m = (m<10) ? "0"+m : m;
-  s = (s<10) ? "0"+s : s;
-  ms = (ms<10) ? "0"+ms : ms;
-
-    div.ms.innerText = ms;
-    div.s.innerText = s;
-    div.m.innerText = m;
-    div.h.innerText = h - (pm*12);
+function display2(x){
+  return (x<10) ? "0"+x : x;
 }
-
-
+ 
+function display(){
+  div.ms.innerText = display2(ms);
+  div.s.innerText = display2(s);
+  div.m.innerText = display2(m);
+  div.h.innerText = display2(h - (pm*12));
+}
 
 box.ms.addEventListener("change", function hideMs(){
   if (this.checked) {
