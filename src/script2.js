@@ -68,20 +68,20 @@ box.m.addEventListener("change", function hideM(){
 });
 
 var radio = document.getElementsByName("radio");
-var testH = 24 - currentTime.getHours();
-var revision = 86400000-currentTime; // time to end day
+const totalTimeDay = 86400000/2;
+var revision = totalTimeDay - (currentTime*1+timeZone*3600000)%totalTimeDay; // time to end day
 
 for (var i = 0;i<2;i++){
 this.addEventListener("change", function ampm(){
   if (radio[0].checked){
-    if (testH < 12){
+    if (h > 12){
       div.Am.innerHTML = "PM";
       pm = true;
     } else{
       div.Am.innerHTML = "AM";
       pm = false;
     }
-    setTimeout(pm,revision);
+    setTimeout(ampm,revision);
   } else {
     div.Am.innerHTML = "";
     pm = false
