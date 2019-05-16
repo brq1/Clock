@@ -21,55 +21,48 @@ var box = {
   m : document.getElementById("minBox")
 }
 
-window.onload = function getTime(){
-  ms = (Math.floor(currentTime/10))%100;
-  s = (Math.floor(currentTime/1000))%60;
-  m = (Math.floor(currentTime/60000))%60;
-  h = (Math.floor(currentTime/3600000))%24 + timeZone;
-
-  display();
-  currentTime = (currentTime*1+10);
-  setTimeout(getTime,10);
+window.onload = function clock(){
+  getTime()
+  displayTime()
+  currentTime = currentTime*1+10;
+  setTimeout(clock,10);
 }
 
-function display2(x){
+function getTime(){
+  ms = (Math.floor(currentTime/10))%100; // getMilliseconds
+  s = (Math.floor(currentTime/1000))%60; // getSeconds
+  m = (Math.floor(currentTime/60000))%60; // getMinutes
+  h = (Math.floor(currentTime/3600000))%24 + timeZone; // getHours
+}
+
+function displayFix(x){ 
   return (x<10) ? "0"+x : x;
 }
  
-function display(){
-  div.ms.innerText = display2(ms);
-  div.s.innerText = display2(s);
-  div.m.innerText = display2(m);
-  div.h.innerText = display2(h - (pm*12));
+function displayTime(){
+  div.ms.innerText = displayFix(ms);
+  div.s.innerText = displayFix(s);
+  div.m.innerText = displayFix(m);
+  div.h.innerText = displayFix(h - (pm*12));
 }
 
-box.ms.addEventListener("change", function hideMs(){
-  if (this.checked) {
-    div.ms.style.visibility = "visible";
-  } else {
-    div.ms.style.visibility = "hidden";
-  }
-});
+function hideTime (box,target){
 
-box.s.addEventListener("change", function hideS(){
-  if (this.checked) {
-    div.s.style.visibility = "visible";
-  } else {
-    div.s.style.visibility = "hidden";
-  }
-});
+    if (box.checked) {
+      target.style.visibility = "visible";
+    } else {
+      target.style.visibility = "hidden";
+    }
+}
 
-box.m.addEventListener("change", function hideM(){
-  if (this.checked) {
-    div.m.style.visibility = "visible";
-  } else {
-    div.m.style.visibility = "hidden";
-  }
-});
+box.ms.addEventListener("change", () => hideTime(box.ms, div.ms));
+box.s.addEventListener("change", () => hideTime(box.s,div.s));
+box.m.addEventListener("change", () => hideTime(box.m,div.m));
+
 
 var radio = document.getElementsByName("radio");
-const totalTimeDay = 86400000/2;
-var revision = totalTimeDay - (currentTime*1+timeZone*3600000)%totalTimeDay; // time to end day
+const halfDay = 43200000; // 12:00 it's hour to change AM to PM
+var revision = halfDay - (currentTime*1+timeZone*3600000)%halfDay; // time to change AM to PM
 
 for (var i = 0;i<2;i++){
 this.addEventListener("change", function ampm(){
@@ -85,5 +78,4 @@ this.addEventListener("change", function ampm(){
   } else {
     div.Am.innerHTML = "";
     pm = false
-  }
-});}
+  }})}
