@@ -1,6 +1,7 @@
 var currentTime = new Date();
-var timeZone = 2;
+var ms, s, m, h;
 var pm = false;
+var format = false;
 
 var div = {
   ms : document.getElementById("msec"),
@@ -16,13 +17,13 @@ var box = {
   m : document.getElementById("minBox"),
 
 }
-var radio = {
-  mode : document.getElementsByClassName("radio")
-}
+var mode = document.getElementsByName("radio");
+var zone = document.getElementsByName("zone");
 
 window.onload = function clock(){
-  getTime()
-  displayTime()
+  getTime();
+  displayTime();
+  revisionAmPm();
   setTimeout(clock,10);
 }
 
@@ -55,28 +56,36 @@ function displayTime(){
 }
 
 function hideTime (box,target){
-
     if (box.checked) {
       target.style.visibility = "visible";
     } else {
       target.style.visibility = "hidden";
     }
 }
-
-function changeMode() {
-  if (pm == true) {
-      if (h<12) {
-        div.Am.innerHTML = "AM";
-      } else {
-        div.Am.innerHTML = "PM";
-      }
-  } else {
-    div.Am.innerHTML = "";
+function revisionAmPm(){
+  if (currentTime%43200000==0){
+    displayAmPm();
   }
-  pm = !pm;
+}
+
+function displayAmPm() {
+  pm = true;
+    if (h<=12) {
+      div.Am.innerHTML = "AM";
+    } else {
+      div.Am.innerHTML = "PM";
+    }
+}
+
+function format24h (){
+  pm = false;
+  div.Am.innerHTML = "";
 }
 
 box.ms.addEventListener("change", () => hideTime(box.ms, div.ms));
 box.s.addEventListener("change", () => hideTime(box.s,div.s));
 box.m.addEventListener("change", () => hideTime(box.m,div.m));
-radio.mode.addEventListener("click", changeMode);
+
+mode[0].addEventListener("change", format24h);
+mode[1].addEventListener("change", displayAmPm);
+

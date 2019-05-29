@@ -22,20 +22,21 @@
          <legend> Settings: </legend>
          <fieldset class="option"> 
             <legend> Display:</legend>
-            <div><input type="checkbox" id="minBox" checked>Minutes</div>
-            <div><input type="checkbox" id="secBox" checked>Second</div>
-            <div><input type="checkbox" id="mscBox" checked>Milisec</div>
+            <div><input type="checkbox" id="minBox" checked />Minutes</div>
+            <div><input type="checkbox" id="secBox" checked />Second</div>
+            <div><input type="checkbox" id="mscBox" checked />Milisec</div>
          </fieldset>
-         <fieldset class="option">
+         <fieldset class="option" id="mode">
             <legend>Mode:</legend>
-            <div><input type="radio" name="radio" class="radio"> AM/PM </div>
-            <div><input type="radio" name="radio" class="radio" checked> 24H </div>
+            <div><input type="radio" name="radio" class="radio" checked="checked"/> 24H </div>
+            <div><input type="radio" name="radio" class="radio"/> AM/PM </div>
+            
          </fieldset>
-         <fieldset class="option" id="UTC">
-            <legend> UTC: </legend>
-            <div><input type="radio" name="zone" > &plusmn00:00 </div>
-            <div><input type="radio" name="zone" > +01:00 </div>
-            <div><input type="radio" name="zone" checked > +02:00 </div>
+         <fieldset class="option" id="Format">
+            <legend> Format: </legend>
+            <div><input type="radio" name="mode" /> Digital clock </div>
+            <div><input type="radio" name="mode" /> Clock face </div>
+            <div><input type="radio" name="mode" checked /> Binary clock </div>
          </fieldset>
       </fieldset>
    </div> 

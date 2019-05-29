@@ -1,7 +1,7 @@
 body {
   background-color: #202020;
   color: white;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Arial';
   width: 520px;
 }
 
@@ -13,6 +13,7 @@ body {
   background-color: #1f301f;
   border: solid 3px lime;
   border-radius: 10px;
+  font-family: 'IBM Plex Mono', monospace;
 
 }
 
