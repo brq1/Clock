@@ -63,7 +63,7 @@ function hideTime (box,target){
     }
 }
 function revisionAmPm(){
-  if (currentTime%43200000==0){
+  if (pm == false && h%12==0){
     displayAmPm();
   }
 }
@@ -77,7 +77,7 @@ function displayAmPm() {
     }
 }
 
-function format24h (){
+function display24h (){
   pm = false;
   div.Am.innerHTML = "";
 }
@@ -86,6 +86,6 @@ box.ms.addEventListener("change", () => hideTime(box.ms, div.ms));
 box.s.addEventListener("change", () => hideTime(box.s,div.s));
 box.m.addEventListener("change", () => hideTime(box.m,div.m));
 
-mode[0].addEventListener("change", format24h);
+mode[0].addEventListener("change", display24h);
 mode[1].addEventListener("change", displayAmPm);
 
