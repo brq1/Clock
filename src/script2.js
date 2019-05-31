@@ -63,7 +63,7 @@ function hideTime (box,target){
     }
 }
 function revisionAmPm(){
-  if (pm == false && h%12==0){
+  if (pm == false && currentTime.getTime()%43200000 == 0 ){
     displayAmPm();
   }
 }
