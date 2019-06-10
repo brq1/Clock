@@ -2,14 +2,14 @@ body {
   background-color: #202020;
   color: white;
   font-family: 'Arial';
-  width: 520px;
+  width: 540px;
 }
 
 #display {
   padding: 0px 10px;
   height: 80px;
   color: lime;
-  font-size: 60px;
+  font-size: 54px;
   background-color: #1f301f;
   border: solid 3px lime;
   border-radius: 10px;
@@ -29,9 +29,14 @@ fieldset{
 
 }
 .box{
-  float: left;
+  float: left; 
   padding-right: 25px;
 }
+
+#display > div:not(:first-child):not(:last-child)::after{
+  content: ":";
+}
+
 
 #AmPm{
   margin-top: 10px;

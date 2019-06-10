@@ -23,7 +23,7 @@ var zone = document.getElementsByName("zone");
 window.onload = function clock(){
   getTime();
   displayTime();
-  revisionAmPm();
+  displayAmPm();
   setTimeout(clock,10);
 }
 
@@ -49,7 +49,7 @@ function trimMilliseconds(v){
 }
 
 function displayTime(){
-  div.ms.innerText = trimMilliseconds(displayFix(ms));
+  div.ms.innerText = displayFix(trimMilliseconds(ms));
   div.s.innerText = displayFix(s);
   div.m.innerText = displayFix(m);
   div.h.innerText = displayFix(trimHour(h));
@@ -61,31 +61,26 @@ function hideTime (box,target){
     } else {
       target.style.visibility = "hidden";
     }
-}
-function revisionAmPm(){
-  if (pm == false && currentTime.getTime()%43200000 == 0 ){
-    displayAmPm();
   }
-}
 
 function displayAmPm() {
-  pm = true;
-    if (h<=12) {
+
+  if (pm) {
+    if (h<12) {
       div.Am.innerHTML = "AM";
     } else {
       div.Am.innerHTML = "PM";
     }
+  } else {
+    div.Am.innerHTML = "";
+  }
 }
 
-function display24h (){
-  pm = false;
-  div.Am.innerHTML = "";
-}
 
 box.ms.addEventListener("change", () => hideTime(box.ms, div.ms));
 box.s.addEventListener("change", () => hideTime(box.s,div.s));
 box.m.addEventListener("change", () => hideTime(box.m,div.m));
 
-mode[0].addEventListener("change", display24h);
-mode[1].addEventListener("change", displayAmPm);
+mode[0].addEventListener("change", function(){pm = false});
+mode[1].addEventListener("change", function(){pm = true});
 
