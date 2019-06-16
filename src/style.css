@@ -51,7 +51,7 @@ fieldset{
   display: flex;
   width: 300px;
   height: 300px;
-  background: linear-gradient(to left, rgb(183, 224, 68), rgba(223, 236, 33, 0.87));
+  background: linear-gradient(to left, rgb(255, 255, 255), rgb(102, 101, 101));
   border: 10px solid black;
   position: relative;
   justify-content: center;

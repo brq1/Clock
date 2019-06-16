@@ -77,14 +77,15 @@ function displayAmPm() {
   }
 }
 
-
 box.ms.addEventListener("change", () => hideTime(box.ms, div.ms));
 box.s.addEventListener("change", () => hideTime(box.s,div.s));
 box.m.addEventListener("change", () => hideTime(box.m,div.m));
+box.s.addEventListener("change", () => hideTime(box.s,pointnerSecond));
+box.m.addEventListener("change", () => hideTime(box.m,pointnerMinute));
+
 
 mode[0].addEventListener("change", function(){pm = false});
 mode[1].addEventListener("change", function(){pm = true});
-
 
 var pointnerHour = document.querySelector(".pointner.hour");
 var pointnerMinute = document.querySelector(".pointner.minute");
