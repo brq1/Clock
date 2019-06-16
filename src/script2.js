@@ -20,12 +20,13 @@ var box = {
 var mode = document.getElementsByName("radio");
 var zone = document.getElementsByName("zone");
 
-window.onload = function clock(){
+document.addEventListener("DOMContentLoaded", function clock(){
   getTime();
   displayTime();
   displayAmPm();
+  setFaceClock();
   setTimeout(clock,10);
-}
+})
 
 function getTime(){
   currentTime = new Date;
@@ -84,3 +85,24 @@ box.m.addEventListener("change", () => hideTime(box.m,div.m));
 mode[0].addEventListener("change", function(){pm = false});
 mode[1].addEventListener("change", function(){pm = true});
 
+
+var pointnerHour = document.querySelector(".pointner.hour");
+var pointnerMinute = document.querySelector(".pointner.minute");
+var pointnerSecond = document.querySelector(".pointner.second");
+var hourAngle, minuteAngle, secondAngle;
+
+function setFaceClock(){
+  currentTime = new Date;
+
+  hourAngle = ((currentTime.getHours()/12*360) + (currentTime.getMinutes()/60)*30);
+  minuteAngle = ((currentTime.getMinutes()/60*360) + (currentTime.getSeconds()*360/60)/60);
+  secondAngle = currentTime.getSeconds()/60*360;
+
+  rotationPointner(pointnerHour, hourAngle);
+  rotationPointner(pointnerMinute, minuteAngle);
+  rotationPointner(pointnerSecond, secondAngle);
+}
+
+function rotationPointner(pointner, angle){
+  pointner.style.transform = `rotate(${angle}deg)`
+}

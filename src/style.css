@@ -34,6 +34,7 @@ fieldset{
 }
 
 #display > div:not(:first-child):not(:last-child)::after{
+  font-family: Arial;
   content: ":";
 }
 
@@ -42,4 +43,89 @@ fieldset{
   margin-top: 10px;
   width: 30px;
   font-size: 22px;
+}
+
+
+.faceClock{
+  box-sizing: border-box;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(to left, rgb(183, 224, 68), rgba(223, 236, 33, 0.87));
+  border: 10px solid black;
+  position: relative;
+  justify-content: center;
+  align-items: middle;
+  border-radius: 50%;
+
+}
+
+.faceClock .number{
+  font-size: 32px;
+  color: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: rotate(var(--rotation));
+}
+
+.faceClock .number.hour1 {--rotation: 30deg;}
+.faceClock .number.hour2 {--rotation: 60deg;}
+.faceClock .number.hour3 {--rotation: 90deg;}
+.faceClock .number.hour4 {--rotation: 120deg;}
+.faceClock .number.hour5 {--rotation: 150deg;}
+.faceClock .number.hour6 {--rotation: 180deg;}
+.faceClock .number.hour7 {--rotation: 210deg;}
+.faceClock .number.hour8 {--rotation: 240deg;}
+.faceClock .number.hour9 {--rotation: 270deg;}
+.faceClock .number.hour10 {--rotation: 300deg;}
+.faceClock .number.hour11 {--rotation: 330deg;}
+.faceClock .number.hour12 {--rotation: 0deg;}
+
+.faceClock .pointner {
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 10px;
+  height: 40%;
+  background-color: black;
+  transform-origin: bottom;
+  border: 1px solid white;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transform: translateX(-50%,-50%);
+}
+.faceClock .center {
+  position: absolute;
+  background-color: black;
+  z-index: 11;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 3px white;
+  align-self: auto;
+  transform: translate(-50%, -50%);
+}
+
+.faceClock .pointner.second{
+  background-color: red;
+  width: 1px;
+  height: 45%;
+  
+}
+.faceClock .pointner.minute{
+  background-color:black;
+  width: 5px;
+  height: 40%;
+
+}
+.faceClock .pointner.hour{
+  background-color: black;
+  width: 7px;
+  height: 30%;
+
 }
