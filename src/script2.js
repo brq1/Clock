@@ -2,13 +2,14 @@ var currentTime = new Date();
 var ms, s, m, h;
 var pm = false;
 var format = false;
+var setTimeZone = document.getElementsByName("TimeZone");
 
 var div = {
   ms : document.getElementById("msec"),
   s : document.getElementById("sec"),
   m : document.getElementById("min"),
   h : document.getElementById("hour"),
-  Am : document.getElementById("AmPm")
+  Am : document.getElementById("AmPm"),
 }
 
 var box = {
@@ -18,7 +19,12 @@ var box = {
 
 }
 var mode = document.getElementsByName("radio");
-var zone = document.getElementsByName("zone");
+var format = {
+  radioDigital : document.getElementById("formatDG"),
+  radioFaceclock: document.getElementById("formatFC"),
+  divDigital : document.getElementById("display"),
+  divFaceclock : document.getElementById("faceClock")
+}
 
 document.addEventListener("DOMContentLoaded", function clock(){
   getTime();
@@ -46,7 +52,7 @@ function displayFix(x){
 }
  
 function trimMilliseconds(v){
-  return (v>100) ? Math.floor(v/10) : v;
+  return (v>=100) ? Math.floor(v/10) : v;
 }
 
 function displayTime(){
@@ -78,14 +84,16 @@ function displayAmPm() {
 }
 
 box.ms.addEventListener("change", () => hideTime(box.ms, div.ms));
-box.s.addEventListener("change", () => hideTime(box.s,div.s));
-box.m.addEventListener("change", () => hideTime(box.m,div.m));
-box.s.addEventListener("change", () => hideTime(box.s,pointnerSecond));
-box.m.addEventListener("change", () => hideTime(box.m,pointnerMinute));
-
+box.s.addEventListener("change", () => hideTime(box.s, div.s));
+box.m.addEventListener("change", () => hideTime(box.m, div.m));
+box.s.addEventListener("change", () => hideTime(box.s, pointnerSecond));
+box.m.addEventListener("change", () => hideTime(box.m, pointnerMinute));
 
 mode[0].addEventListener("change", function(){pm = false});
 mode[1].addEventListener("change", function(){pm = true});
+
+format.radioDigital.addEventListener("change", () => hideTime(format.radioDigital, format.divDigital ));
+format.radioFaceclock.addEventListener("change", () => hideTime(format.radioFaceclock, format.divFaceclock ));
 
 var pointnerHour = document.querySelector(".pointner.hour");
 var pointnerMinute = document.querySelector(".pointner.minute");
@@ -97,7 +105,7 @@ function setFaceClock(){
 
   hourAngle = ((currentTime.getHours()/12*360) + (currentTime.getMinutes()/60)*30);
   minuteAngle = ((currentTime.getMinutes()/60*360) + (currentTime.getSeconds()*360/60)/60);
-  secondAngle = currentTime.getSeconds()/60*360;
+  secondAngle = ((currentTime.getSeconds()/60*360) + (currentTime.getMilliseconds()/180));
 
   rotationPointner(pointnerHour, hourAngle);
   rotationPointner(pointnerMinute, minuteAngle);

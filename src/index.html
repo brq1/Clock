@@ -18,7 +18,7 @@
          <div id="sec" class="box"></div>
          <div id="msec" class="box"></div>
       </div>
-      <div class="faceClock"> 
+      <div class="faceClock" id="faceClock"> 
          <div class="center"></div>
          <div class="pointner hour"></div>
          <div class="pointner minute"></div>
@@ -49,17 +49,29 @@
             <legend>Mode:</legend>
             <div><label><input type="radio" name="radio" class="radio" checked="checked"/> 24H </label></div>
             <div><label><input type="radio" name="radio" class="radio"/> AM/PM </label></div>
+            <div><label><input type="checkbox"> Calendar Card</label></div>
             
          </fieldset>
          <fieldset class="option" id="Format">
             <legend> Format: </legend>
-            <div><label><input type="radio" name="mode" /> Digital clock </label></div>
-            <div><label><input type="radio" name="mode" /> Clock face </label></div>
-            <div><label><input type="radio" name="mode" checked /> Binary clock </label></div>
+            <div><label><input type="checkbox" id="formatDG" name="format" checked /> Digital clock </label></div>
+            <div><label><input type="checkbox" id="formatFC" name="format" checked/> Clock face </label></div>
+         </fieldset>
+         <fieldset class="option">
+            <legend> Other option: </legend>
+               <div>UTC: <select name="TimeZone">
+                  <option> +0</option>
+                  <option> +1</option>
+                  <option> +2</option>
+               </select></div>
+               <div>Font: <select name="Font">
+                  <option> Arabic</option>
+                  <option> Roman</option>
+                  <option> Brail</option>
+               </select></div>
          </fieldset>
       </fieldset>
    </div> 
-
 <script type="text/javascript" src="script2.js" defer></script>
 </body>
 </html>
